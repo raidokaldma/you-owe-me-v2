@@ -1,0 +1,3 @@
+Set cookie with JS, remember ID
+Autofocus in popups
+Show error messages when saving fails, data loading fail (!404)

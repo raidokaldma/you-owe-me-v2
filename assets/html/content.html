@@ -1,0 +1,80 @@
+<div>
+    <div class="table-responsive">
+        <table class="table table-condensed table-hover">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Who paid?</th>
+                <th>For what?</th>
+                <th class="text-right">How much did it cost?</th>
+                <th>Who consumed it?</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="row in data.rows" class="animate-slide">
+                <td>
+                    <button type="button" class="close" ng-click="removeRow(row)">
+                        <span>&times;</span>
+                    </button>
+                </td>
+                <td class="form-group">
+                    <select ng-model="row.payer" ng-options="name for name in data.names" required="true"
+                            class="form-control"></select>
+                </td>
+                <td class="form-group">
+                    <input type="text" ng-model="row.description" class="form-control"
+                           placeholder="Description"/>
+                </td>
+                <td class="form-group">
+                    <input type="number" step="0.1" min="0" ng-model="row.cost" required="true"
+                           class="form-control text-right" placeholder="Cost"/>
+                </td>
+                <td class="form-group">
+                    <div class="btn-group">
+                        <button ng-repeat="name in data.names"
+                                type="button" class="btn btn-default animate-fade"
+                                ng-class="{'active': row.selection[name]}"
+                                ng-click="row.selection[name] = !row.selection[name]" ng-disabled="readOnly">
+                            {{name}}
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary" ng-click="addRow()">
+            <span class="glyphicon glyphicon-plus"></span> Add row
+        </button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default animate-fade">
+            <div class="panel-heading">
+                <h3 class="panel-title">Totals</h3>
+            </div>
+            <table class="table table-hover">
+                <tr ng-repeat="name in data.names">
+                    <td><strong>{{name}}</strong>'s total expense: <strong>{{totalExpensesPerPerson[name] |
+                        number:2}}</strong></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default animate-fade" ng-if="payments.length">
+            <div class="panel-heading">
+                <h3 class="panel-title">Payments</h3>
+            </div>
+            <table class="table table-hover">
+                <tr ng-repeat="payment in payments">
+                    <td><strong>{{payment.payer}}</strong> pays <strong>{{payment.pays | number:2}}</strong> to
+                        <strong>{{payment.receiver}}</strong></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

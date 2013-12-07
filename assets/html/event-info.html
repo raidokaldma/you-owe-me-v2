@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="animate-fade" ng-if="data.eventName">
+            <div class="page-header">
+                <h1>{{data.eventName}}</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 animate-fade" ng-if="data.notes">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Notes</h3>
+            </div>
+            <div class="panel-body">{{data.notes}}</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div ng-controller="MainCtrl">
+
+<div class="container">
+    <div ng-include="'assets/html/navbar.html'"></div>
+    <div ng-include="'assets/html/start.html'" ng-if="!data.names.length && firstLoadDone"></div>
+    <div ng-include="'assets/html/event-info.html'" ng-if="data.names.length"></div>
+    <div ng-include="'assets/html/content.html'" ng-if="data.names.length"></div>
+</div>
+
+<div ng-include="'assets/html/modals.html'"></div>
+</div>
