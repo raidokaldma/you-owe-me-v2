@@ -1,7 +1,6 @@
 YouOweMeApp.service('DataService', function($http, $timeout) {
     var that = this;
-    var domain = 'http://api.openkeyval.org/';
-    var keyPrefix = 'b840lvtj0s';
+    var domain = 'http://mynodejs-hammertimeee.rhcloud.com/';
     var defaultData = {
         eventName: '',
         notes: '',
@@ -17,7 +16,7 @@ YouOweMeApp.service('DataService', function($http, $timeout) {
     this.data = angular.copy(defaultData);
 
     var url = function() {
-        return domain + keyPrefix + "-" + that.key;
+        return domain + that.key;
     };
 
     this.loadData = function() {
@@ -46,8 +45,7 @@ YouOweMeApp.service('DataService', function($http, $timeout) {
     };
 
     var storeData = function() {
-        var params = "data=" + angular.toJson(that.data);
-        return $http.post(url(), params);
+        return $http.post(url(), that.data);
     };
 
     this.resetData = function() {

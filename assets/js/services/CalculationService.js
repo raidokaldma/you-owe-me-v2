@@ -1,6 +1,6 @@
 YouOweMeApp.service('CalculationService', function(DataService) {
     this.calcTotalExpensesPerPerson = function() {
-        _calcTotalExpensesPerPerson();
+        return _calcTotalExpensesPerPerson();
     }
 
     this.calcPayments = function () {
