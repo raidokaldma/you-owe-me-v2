@@ -9,6 +9,7 @@ YouOweMeApp.service('DataService', function($http, $timeout) {
             description: '',
             selection: {}
         }],
+        //TODO: dataIsNew is saved in db. It shouldn't be.
         dataIsNew: true
     };
 
