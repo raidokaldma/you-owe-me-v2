@@ -8,9 +8,7 @@ YouOweMeApp.service('DataService', function($http, $timeout) {
         rows: [{
             description: '',
             selection: {}
-        }],
-        //TODO: dataIsNew is saved in db. It shouldn't be.
-        dataIsNew: true
+        }]
     };
 
     this.key = '';
@@ -23,7 +21,7 @@ YouOweMeApp.service('DataService', function($http, $timeout) {
     this.loadData = function() {
         var setData = function(loadedData) {
             that.data = loadedData;
-        }
+        };
         return $http.get(url()).success(setData).error(this.resetData);
 
     };
@@ -35,7 +33,7 @@ YouOweMeApp.service('DataService', function($http, $timeout) {
         }
         var resetStoringState = function() {
             storingInProgress = false;
-        }
+        };
 
         storingInProgress = true;
 
