@@ -18,12 +18,17 @@ YouOweMeApp.service('DataService', function($http, $timeout) {
         return domain + that.key;
     };
 
+    this.rememberKey = function() {
+        //Won't work, if key contains "=" or ";"
+        document.cookie = "rememberedKey=" + that.key + "; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
+    };
+
     this.loadData = function() {
         var setData = function(loadedData) {
             that.data = loadedData;
+            that.rememberKey();
         };
         return $http.get(url()).success(setData).error(this.resetData);
-
     };
 
     var storingInProgress = false;

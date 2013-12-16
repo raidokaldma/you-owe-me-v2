@@ -25,7 +25,7 @@ YouOweMeApp.controller('MainCtrl', function ($scope, $rootScope, $location, $rou
 
             delete row.selection[name];
         });
-    }
+    };
 
     $scope.addRow = function() {
         var newRow = angular.copy(emptyRow);
@@ -51,27 +51,27 @@ YouOweMeApp.controller('MainCtrl', function ($scope, $rootScope, $location, $rou
     };
 
     var loadData = function() {
-        var setData = function(data) {
+        var setData = function() {
             $scope.data = DataService.data;
             $scope.dataIsNew = true;
             $scope.firstLoadDone = true;
-        }
+        };
 
         DataService.loadData().finally(setData);
-    }
+    };
 
     $scope.$on('$routeChangeSuccess', function (angularEvent, current, previous) {
-        var currentId = current.pathParams.id;
-        $scope.key = currentId;
+        var currentKey = current.pathParams.key;
+        $scope.key = currentKey;
         DataService.key = $scope.key;
 
-        var previousId = previous && previous.pathParams && previous.pathParams.id;
-        if (currentId && currentId !== previousId) {
+        var previousKey = previous && previous.pathParams && previous.pathParams.key;
+        if (currentKey && currentKey !== previousKey) {
             loadData();
         }
     });
 
-    $scope.$watch('data', function(newValue, oldValue) {
+    $scope.$watch('data', function() {
         if ($scope.dataIsNew) {
             delete $scope.dataIsNew;
             return;
