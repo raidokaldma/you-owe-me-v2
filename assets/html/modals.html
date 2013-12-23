@@ -19,7 +19,7 @@
                     <div class="form-inline">
                         <div class="form-group" ng-class="{'has-error': !newNameUnique}">
                             <input id="newName" type="text" class="form-control" ng-model="formData.newName" maxlength="20"
-                                   placeholder="Person's name"/>
+                                   placeholder="Person's name" on-enter="newNameValid && addName()"/>
                         </div>
                         <button type="button" class="btn btn-default" ng-disabled="!newNameValid" ng-click="addName()">Add person</button>
                     </div>
@@ -57,7 +57,8 @@
 
                 <div class="form-group" ng-class="{'has-error': !newNameUnique}">
                     <input id="personModalNewName" type="text" class="form-control"
-                           ng-model="formData.newName" maxlength="20" placeholder="Person's name"/>
+                           ng-model="formData.newName" maxlength="20" placeholder="Person's name"
+                           on-enter="newNameValid && addName()"/>
                 </div>
             </div>
             <div class="modal-footer">
