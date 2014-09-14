@@ -26,3 +26,23 @@ span.name-label > a {
     background-repeat: no-repeat;
     background-position: right 140px top 70px;
 }
+
+/* custom colors, lighter buttons */
+.btn-default {
+    color: #fff;
+    background-color: #ccd0d1;
+    border-color: #ccd0d1;
+    /*color: #74898a;*/
+}
+
+.btn-default:focus, .btn-default:hover {
+     color: #fff;
+     background-color: #dce0e1;
+     border-color: #dce0e1;
+}
+
+.active:focus, .active:hover {
+    color: #fff;
+    background-color: #95a5a6;
+    border-color: #74898a;
+}
