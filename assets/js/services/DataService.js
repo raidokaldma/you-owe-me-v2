@@ -1,6 +1,6 @@
 YouOweMeApp.service('DataService', function($http, $timeout) {
     var that = this;
-    var domain = 'http://key-value-store.hammertime.ee/';
+    var domain = 'https://youowemestore.firebaseio.com/';
     var defaultData = {
         eventName: '',
         notes: '',
@@ -15,7 +15,7 @@ YouOweMeApp.service('DataService', function($http, $timeout) {
     this.data = angular.copy(defaultData);
 
     var url = function() {
-        return domain + that.key;
+        return domain + that.key + '.json';
     };
 
     this.rememberKey = function() {
@@ -25,7 +25,7 @@ YouOweMeApp.service('DataService', function($http, $timeout) {
 
     this.loadData = function() {
         var setData = function(loadedData) {
-            that.data = loadedData;
+            typeof loadedData === 'object' ? that.setData(loadedData) : that.resetData();
             that.rememberKey();
         };
         return $http.get(url()).success(setData).error(this.resetData);
@@ -49,10 +49,14 @@ YouOweMeApp.service('DataService', function($http, $timeout) {
     };
 
     var storeData = function() {
-        return $http.post(url(), that.data);
+        return $http.put(url(), that.data);
     };
 
     this.resetData = function() {
         that.data = angular.copy(defaultData);
+    };
+
+    this.setData = function(data) {
+        that.data = data;
     };
 });
