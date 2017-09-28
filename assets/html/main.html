@@ -2,11 +2,6 @@
 
 <div class="container">
     <div ng-include="'assets/html/navbar.html'"></div>
-
-    <div class="alert alert-warning">
-        <strong>Important!</strong> This page will no longer exist after September 2017 and you will lose your data. Yeah, sorry about that.
-    </div>
-
     <div ng-include="'assets/html/start.html'" ng-if="!data.names.length && firstLoadDone"></div>
     <div ng-include="'assets/html/event-info.html'" ng-if="data.names.length"></div>
     <div ng-include="'assets/html/content.html'" ng-if="data.names.length"></div>
