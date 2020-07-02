@@ -46,3 +46,8 @@ span.name-label > a {
     background-color: #95a5a6;
     border-color: #74898a;
 }
+
+/* Old bootstrap container is way too narrow. Screens can be a looooot wider nowadays. Fixes min 1170px width. */
+.container {
+    width: fit-content;
+}
